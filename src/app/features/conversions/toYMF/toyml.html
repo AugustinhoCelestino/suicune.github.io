@@ -1,0 +1,193 @@
+<div class="steps-conteiner">
+    <div class="step">
+        <div class="icon">
+            <i class="fa fa-cubes" aria-hidden="true"></i>
+        </div>
+        <div class="step-text-conteiner">
+            <div class="title">
+                Tipo de Arquivo
+            </div>
+            <div class="text">
+                Selecione o tipo do arquivo que deseja converter
+
+                @if(selectedType != ''){
+                <br>
+                <br>
+                Tipo selecionado: <b> {{selectedType}} </b>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="step" [ngClass]="{'disabled': 2 > step}">
+        <div class="icon">
+            <i class="fa fa-upload" aria-hidden="true"></i>
+        </div>
+        <div class="step-text-conteiner">
+            <div class="title">
+                Importação de Arquivo
+            </div>
+            <div class="text">
+                Selecione o arquivo que deseja converter para YMF.
+
+                @if(fileName != ''){
+                <br>
+                <br>
+                Arquivo selecionado: <b> {{fileName}} </b>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="step" [ngClass]="{'disabled': 3 > step}">
+        <div class="icon">
+            <i class="fa fa-eye" aria-hidden="true"></i>
+        </div>
+        <div class="step-text-conteiner">
+            <div class="title">
+                Pré-visualização
+            </div>
+            <div class="text">
+                Visualize uma prévia do arquivo importado.
+            </div>
+        </div>
+    </div>
+
+    <div class="step" [ngClass]="{'disabled': 4 > step}">
+        <div class="icon">
+            <i class="fa fa-download" aria-hidden="true"></i>
+        </div>
+        <div class="step-text-conteiner">
+            <div class="title">
+                Download
+            </div>
+            <div class="text">
+                Faça o download do arquivo.
+            </div>
+        </div>
+    </div>
+</div>
+
+@if(step == 1){
+<div class="step-one">
+    <div class="radio-group">
+        @for (importType of importTypes; track importType) {
+        <div class="radio-card" (click)="setType(importType)"
+            [ngClass]="{'selected': (importType.type == selectedType), 'disabled': importType.disabled}">
+            <div class="radio-card-info">
+                <img [src]="importType.img">
+                <div class="infos">
+                    <div class="title">
+                        {{importType.type}}
+                    </div>
+                    <div class="text">
+                        {{importType.url}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>
+}
+@if(step == 2){
+<div class="step-two">
+
+    <input type="file" class="form-control w-50" (change)="selectFile($event)">
+
+</div>
+}
+@if(step == 3){
+<div class="step-two">
+    <table class="table" *ngIf="users?.length>0">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Mobile No</th>
+                <th>State</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let u of users">
+                <td>{{u.Id}}</td>
+                <td>{{u.Name}}</td>
+                <td>{{u.Email}}</td>
+                <td>{{u.Mobile}}</td>
+                <td>{{u.State}}</td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+}
+
+@if(step == 4){
+<div class="step-two">
+
+    Pronto!
+    <br>
+    Seu arquivo já está disponivel para download.
+    <br>
+    <br>
+    <br>
+
+    <button mat-flat-button color="primary" (click)="nextStep()">
+        Download
+        <i class="fa fa-download" aria-hidden="true"></i>
+    </button>
+</div>
+}
+
+<div class="footer">
+    @if(!stepLoading){
+    <div class="step-controler">
+        <div class="step-line">
+
+            @if(step == 1){
+            <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
+            }
+            @if(step > 1){
+            <i class="fa fa-check-circle" aria-hidden="true"></i>
+            }
+            <div class="line" [ngClass]="{'disabled': 2 > step}"></div>
+
+            @if(2 > step){ <i class="fa fa-circle disabled" aria-hidden="true"></i>
+            }
+            @if(step == 2){
+            <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
+            }
+            @if(step > 2){
+            <i class="fa fa-check-circle" aria-hidden="true"></i>
+            }
+
+            <div class="line" [ngClass]="{'disabled': 3 > step}"></div>
+
+            @if(3 > step){ <i class="fa fa-circle disabled" aria-hidden="true"></i>
+            }
+            @if(step == 3){
+            <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
+            }
+            @if(step > 3){
+            <i class="fa fa-check-circle" aria-hidden="true"></i>
+            }
+
+            <div class="line" [ngClass]="{'disabled': 4 > step}"></div>
+
+            @if(4 > step){ <i class="fa fa-circle disabled" aria-hidden="true"></i>
+            }
+            @if(step == 4){
+            <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
+            }
+            @if(step > 4){
+            <i class="fa fa-check-circle" aria-hidden="true"></i>
+            }
+        </div>
+    </div>
+    }
+    <button mat-flat-button color="primary" (click)="nextStep()">
+        Próximo passo
+        <i class="fa fa-arrow-right" aria-hidden="true"></i>
+    </button>
+</div>
