@@ -2,6 +2,8 @@
   "routes": [
     "/home",
     "/setup",
-    "/toyml"
+    "/tomaps",
+    "/topegasus",
+    "/toymf"
   ]
 }

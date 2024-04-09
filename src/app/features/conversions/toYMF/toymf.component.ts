@@ -10,8 +10,8 @@ import * as xls from 'xlsx';
   selector: 'toYML',
   standalone: true,
   imports: [RouterOutlet, MaterialModule, CommonModule],
-  templateUrl: './toyml.html',
-  styleUrl: './toyml.scss'
+  templateUrl: './toymf.component.html',
+  styleUrl: './toymf.component.scss'
 })
 export class ToYmlComponent {
 
@@ -26,31 +26,31 @@ export class ToYmlComponent {
 
   importTypes: any[] = [
     {
-      img: 'assets/b3.png',
+      img: 'assets/b3_logo.png',
       type: 'B3',
       url: 'https://www.b3.com.br/',
       disabled: false,
     },
     {
-      img: 'assets/b3.png',
+      img: 'assets/bloomberg_logo.jpg',
       type: 'Bloomberg',
       url: 'https://www.bloomberg.com/',
       disabled: false,
     },
     {
-      img: 'assets/b3.png',
+      img: 'assets/cetip_logo.jpg',
       type: 'CETIP',
-      url: 'https://www.b3.com.br/',
-      disabled: true,
+      url: 'https://www.cetip.com.br/',
+      disabled: false,
     },
     {
-      img: 'assets/b3.png',
+      img: 'assets/selic_logo.png',
       type: 'SELIC',
-      url: 'https://www.b3.com.br/',
-      disabled: true,
+      url: 'https://www.bcb.gov.br/',
+      disabled: false,
     },
     {
-      img: 'assets/b3.png',
+      img: 'assets/logo.png',
       type: 'AMBIMA',
       url: 'https://www.b3.com.br/',
       disabled: true,

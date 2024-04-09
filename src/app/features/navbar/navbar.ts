@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'navbar',
@@ -9,4 +9,10 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './navbar.scss'
 })
 export class NavbarComponent {
+
+  router = inject(Router);
+  
+  goTo(url: string) {
+    this.router.navigateByUrl(url);
+  }
 }

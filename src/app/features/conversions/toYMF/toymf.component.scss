@@ -8,15 +8,16 @@
 
 .step {
     display: grid;
-    grid-template-columns: 40px 1fr;
-    padding: 10px 20px;
-    gap: 15px;
+    grid-template-columns: 20px 1fr;
+    padding: 5px 20px;
+    gap: 20px;
     align-content: center;
     align-items: center;
     justify-content: center;
     justify-items: center;
     border-right: 1px solid #c5eafa;
     background-color: #def5ff;
+    line-height: normal;
 
     &.disabled {
         cursor: not-allowed;
@@ -29,20 +30,23 @@
     }
 
     .icon {
-        font-size: 30px;
+        font-size: 24px;
         color: #34a3d4;
     }
 
     .step-text-conteiner {
+        display: grid;
+        gap: 5px;
+
         .title {
-            font-size: 14px;
+            font-size: 12px;
             font-weight: bold;
             text-align: justify;
 
         }
 
         .text {
-            font-size: 12px;
+            font-size: 10px;
             text-align: justify;
         }
     }
@@ -90,11 +94,11 @@
 
     .radio-card-info {
         display: grid;
-        grid-template-columns: 100px 200px;
+        grid-template-columns: 50px auto;
         gap: 10px;
 
         img {
-            width: 100px;
+            width: 50px;
         }
 
         .infos {
@@ -130,16 +134,22 @@
 }
 
 
-.footer {
-    display: flex;
+.step-controler-conteiner {
+    display: grid;
     align-content: center;
     justify-content: center;
     align-items: center;
     flex-direction: row;
     gap: 30px;
+    position: absolute;
+    bottom: 10px;
+    align-self: center;
+    width: 100%;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
 
     .step-controler {
-        width: 40vw;
+        width: 200px;
 
         .step-line {
             display: grid;

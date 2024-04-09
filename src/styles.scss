@@ -1,14 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import "@angular/material/prebuilt-themes/indigo-pink.css";
 
-html,
-body {
+html {
     height: 100%;
-}
-
-body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 body {
@@ -20,8 +14,42 @@ body {
     overflow: hidden;
     width: 100vw;
 }
-:root {
-    --menu-width: 37.5em; /* Width of menu */
-    --items: 4; /* Number of items you have */
-    --item-width: calc(var(--menu-width) / var(--items));
+
+::-webkit-scrollbar {
+    background-color: #68686844;
+    width: 5px;
+    height: 5px;
+    border-radius: 10px;
+}
+
+:-webkit-scrollbar-track {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(.5, #a520ca), color-stop(1, #2681cc));
+    border-radius: 10px;
+}
+
+
+.title-title {
+    font-size: 16px;
+
+    &:after {
+        background: linear-gradient(45deg, #102eff, #d2379b);
+        border-radius: 0.25rem;
+        content: '';
+        display: block;
+        height: 3px;
+        width: 42px;
+        margin-bottom: 1.25rem;
+    }
+}
+
+.layout-conteiner{
+    height: calc(100vh - 275px);
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
 }
