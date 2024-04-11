@@ -33,7 +33,7 @@ body {
 }
 
 
-.title-title {
+.layout-title {
     font-size: 16px;
 
     &:after {
@@ -50,6 +50,4 @@ body {
 .layout-conteiner{
     height: calc(100vh - 275px);
     overflow: auto;
-    display: flex;
-    flex-direction: column;
 }

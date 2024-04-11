@@ -1,1 +1,43 @@
-setup work
+<div class="layout-title">
+    Configurações de Conversão de Layout
+</div>
+<div class="layout-conteiner">
+
+    <section class="accordion">
+        @for(config of configs; track config.id){
+        <div class="tab">
+            <label (click)="config.open = !config.open" class="tab-label">
+                <div>
+                    <i class="fa fa-cog" aria-hidden="true"></i> Configuração {{config.fromType}} para {{config.toType}} - (id:{{config.id}})
+                </div>
+                <!-- <button>editar</button> -->
+            </label>
+            <div class="tab-content">
+                @if(config.open){
+
+                @for(tofrom of config.toFrom; track tofrom){
+                <div class="form">
+                    <div class="label-imput">
+                        <label>De:</label>
+                        <input type="text" [(ngModel)]="tofrom.from">
+                    </div>
+                    <div class="label-imput">
+                        <label>Para:</label>
+                        <select [(ngModel)]="tofrom.to.type" class="custom-select aaaa">
+                            <option value="COLUNA">COLUNA</option>
+                            <option value="FIXO">FIXO</option>
+                        </select>
+                    </div>
+                    <div class="label-imput">
+                        <label>Valor:</label>
+                        <input type="text" [(ngModel)]="tofrom.to.value">
+                    </div>
+                </div>
+                }
+                }
+            </div>
+        </div>
+        }
+    </section>
+
+</div>

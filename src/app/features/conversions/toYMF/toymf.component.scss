@@ -16,8 +16,13 @@
     justify-content: center;
     justify-items: center;
     border-right: 1px solid #c5eafa;
-    background-color: #def5ff;
     line-height: normal;
+    cursor: pointer;
+
+    &.active {
+        background-color: #def5ff;
+        ;
+    }
 
     &.disabled {
         cursor: not-allowed;
@@ -53,7 +58,6 @@
 }
 
 .step-one {
-    height: 50vh;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -70,9 +74,11 @@
         border: #c5eafa 1px solid;
         border-radius: 15px;
         margin: 15px;
-        padding: 10px;
+        padding: 10px 20px;
         cursor: pointer;
         background-color: white;
+        display: flex;
+
 
         &:hover {
             border: #c5eafa 1px solid;
@@ -96,6 +102,7 @@
         display: grid;
         grid-template-columns: 50px auto;
         gap: 10px;
+        align-items: center;
 
         img {
             width: 50px;
@@ -124,15 +131,65 @@
 }
 
 .step-two {
-    height: 50vh;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     align-content: space-around;
     align-items: center;
     justify-content: center;
+
+    .file-send {
+        border-radius: 10px;
+        border: 1px dashed #34a3d4;
+        margin: 20px;
+        padding: 20px 40px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        align-items: center;
+        color: #3f51b5;
+
+        &:hover {
+            background: #cdeefc;
+        }
+    }
+
+    .file-sended {
+        border-radius: 10px;
+        border: 1px solid;
+        padding: 5px 30px;
+        color: #3f51b5;
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        align-items: center;
+    }
 }
 
+.step-three {
+    width: 100%;
+
+    .container{
+        padding: 10px;
+        height: calc(100vh - 400px);
+        overflow: auto;
+    }
+    .table {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #c5eafa;
+        border-radius: 5px;
+    
+        td{
+            text-align: center;
+        }
+
+        tr:hover{
+            background-color: #cdeefc;
+        }
+    }
+}
 
 .step-controler-conteiner {
     display: grid;
@@ -180,4 +237,9 @@
         }
 
     }
+}
+
+button {
+    zoom: 80%;
+    text-transform: uppercase;
 }

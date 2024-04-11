@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MaterialModule } from '../../../shared/material';
 import { CommonModule } from '@angular/common';
-import { MatRadioModule } from '@angular/material/radio';
-import { FormsModule } from '@angular/forms';
 import * as xls from 'xlsx';
 
 @Component({
@@ -23,6 +21,7 @@ export class ToYmlComponent {
 
   file: any;
   fileName: string = '';
+  fileSize: number = 0;
 
   importTypes: any[] = [
     {
@@ -64,11 +63,26 @@ export class ToYmlComponent {
     this.selectedType = _type.type;
   }
 
+  goToStep(_step: number) {
+    this.stepLoading = true;
+    if (this.step > _step)
+      this.step = _step;
+    setTimeout(() => {
+      this.stepLoading = false;
+    }, 100);
+  }
+
   nextStep() {
     this.stepLoading = true;
-    if (this.step == 4)
-      this.step = 0;
     this.step = this.step + 1;
+    setTimeout(() => {
+      this.stepLoading = false;
+    }, 100);
+  }
+
+  backStep() {
+    this.stepLoading = true;
+    this.step = this.step - 1;
     setTimeout(() => {
       this.stepLoading = false;
     }, 100);
@@ -77,7 +91,7 @@ export class ToYmlComponent {
   selectFile(e: any) {
     this.file = e.target.files[0];
     this.fileName = this.file.name;
-
+    this.fileSize = this.file.size / 1024;
     this.readExcelFile();
   }
 

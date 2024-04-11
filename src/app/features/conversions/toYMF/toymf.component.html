@@ -1,9 +1,9 @@
-<div class="title-title">
+<div class="layout-title">
     Conversão para YMF
 </div>
 <div class="layout-conteiner">
     <div class="steps-conteiner">
-        <div class="step">
+        <div class="step" [ngClass]="{'active': step == 1}" (click)="goToStep(1)">
             <div class="icon">
                 <i class="fa fa-cubes" aria-hidden="true"></i>
             </div>
@@ -15,15 +15,14 @@
                     Selecione o tipo do arquivo que deseja converter
                 </div>
 
-                @if(selectedType != ''){
                 <div class="text">
                     Tipo selecionado: <b> {{selectedType}} </b>
                 </div>
-                }
+
             </div>
         </div>
 
-        <div class="step" [ngClass]="{'disabled': 2 > step}">
+        <div class="step" [ngClass]="{'disabled': 2 > step, 'active': step == 2}" (click)="goToStep(2)">
             <div class="icon">
                 <i class="fa fa-upload" aria-hidden="true"></i>
             </div>
@@ -33,17 +32,14 @@
                 </div>
                 <div class="text">
                     Selecione o arquivo que deseja converter para YMF.
-
-                    @if(fileName != ''){
-                    <br>
-                    <br>
+                </div>
+                <div class="text">
                     Arquivo selecionado: <b> {{fileName}} </b>
-                    }
                 </div>
             </div>
         </div>
 
-        <div class="step" [ngClass]="{'disabled': 3 > step}">
+        <div class="step" [ngClass]="{'disabled': 3 > step, 'active': step == 3}"  (click)="goToStep(3)">
             <div class="icon">
                 <i class="fa fa-eye" aria-hidden="true"></i>
             </div>
@@ -57,7 +53,7 @@
             </div>
         </div>
 
-        <div class="step" [ngClass]="{'disabled': 4 > step}">
+        <div class="step" [ngClass]="{'disabled': 4 > step,  'active': step == 4}" >
             <div class="icon">
                 <i class="fa fa-download" aria-hidden="true"></i>
             </div>
@@ -84,9 +80,6 @@
                         <div class="title">
                             {{importType.type}}
                         </div>
-                        <div class="text">
-                            {{importType.url}}
-                        </div>
                     </div>
                 </div>
             </div>
@@ -97,33 +90,49 @@
     @if(step == 2){
     <div class="step-two">
 
-        <input type="file" class="form-control w-50" (change)="selectFile($event)">
+
+        <label class="file-send" for="fileToConvert"> <i class="fa fa-cloud-upload" aria-hidden="true"></i> Enviar
+            Arquivo XLSX</label>
+        <input type="file" name="fileToConvert" id="fileToConvert" hidden (change)="selectFile($event)">
+        @if(fileName != ''){
+        <label class="file-sended">
+            <i class="fa fa-file-text-o" aria-hidden="true"></i>
+            <div>
+                {{fileName}}
+                <br>
+                {{fileSize | number : '1.2-2'}} kb
+            </div>
+        </label>
+        }
+
 
     </div>
     }
     @if(step == 3){
-    <div class="step-two">
-        <table class="table" *ngIf="users?.length>0">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Mobile No</th>
-                    <th>State</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let u of users">
-                    <td>{{u.Id}}</td>
-                    <td>{{u.Name}}</td>
-                    <td>{{u.Email}}</td>
-                    <td>{{u.Mobile}}</td>
-                    <td>{{u.State}}</td>
+    <div class="step-three">
+        <div class="container">
+            <table class="table" *ngIf="users?.length>0">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Mobile No</th>
+                        <th>State</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let u of users">
+                        <td>{{u.Id}}</td>
+                        <td>{{u.Name}}</td>
+                        <td>{{u.Email}}</td>
+                        <td>{{u.Mobile}}</td>
+                        <td>{{u.State}}</td>
 
-                </tr>
-            </tbody>
-        </table>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
     }
 
@@ -137,7 +146,7 @@
         <br>
         <br>
 
-        <button mat-flat-button color="primary" (click)="nextStep()">
+        <button mat-flat-button color="primary">
             Download
             <i class="fa fa-download" aria-hidden="true"></i>
         </button>
@@ -145,7 +154,14 @@
     }
 
     <div class="step-controler-conteiner">
-        <div></div>
+        <div>
+            @if(step != 1){
+            <button mat-flat-button color="primary" (click)="backStep()">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                Passo Anterior
+            </button>
+            }
+        </div>
         <div class="step-controler">
             @if(!stepLoading){
             <div class="step-line">
@@ -192,10 +208,14 @@
             }
         </div>
 
-        <button mat-flat-button color="primary" (click)="nextStep()">
-            Próximo passo
-            <i class="fa fa-arrow-right" aria-hidden="true"></i>
-        </button>
+        <div>
+            @if(step != 4){
+            <button mat-flat-button color="primary" (click)="nextStep()">
+                Próximo Passo
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+            </button>
+            }
+        </div>
     </div>
 
 
