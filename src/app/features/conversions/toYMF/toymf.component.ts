@@ -16,6 +16,7 @@ export class ToYmlComponent {
   step = 1;
   stepLoading = false;
   selectedType: string = '';
+  fileType: string = '';
 
   users: any;
 
@@ -26,32 +27,56 @@ export class ToYmlComponent {
   importTypes: any[] = [
     {
       img: 'assets/b3_logo.png',
-      type: 'B3',
-      url: 'https://www.b3.com.br/',
+      type: 'XP Investimentos',
+      filetype: 'XLSX',
       disabled: false,
+    },
+    {
+      img: 'assets/b3_logo.png',
+      type: 'BlackRock',
+      filetype: 'PDF',
+      disabled: false,
+    },
+    {
+      img: 'assets/b3_logo.png',
+      type: 'Investo',
+      filetype: 'XLSX',
+      disabled: false,
+    },
+    {
+      img: 'assets/b3_logo.png',
+      type: 'GoldmanSachs',
+      filetype: 'XLSX',
+      disabled: false,
+    },
+    {
+      img: 'assets/b3_logo.png',
+      type: 'B3',
+      filetype: 'XLSX',
+      disabled: true,
     },
     {
       img: 'assets/bloomberg_logo.jpg',
       type: 'Bloomberg',
-      url: 'https://www.bloomberg.com/',
-      disabled: false,
+      filetype: 'XLSX',
+      disabled: true,
     },
     {
       img: 'assets/cetip_logo.jpg',
       type: 'CETIP',
-      url: 'https://www.cetip.com.br/',
-      disabled: false,
+      filetype: 'XLSX',
+      disabled: true,
     },
     {
       img: 'assets/selic_logo.png',
       type: 'SELIC',
-      url: 'https://www.bcb.gov.br/',
-      disabled: false,
+      filetype: 'XLSX',
+      disabled: true,
     },
     {
       img: 'assets/logo.png',
       type: 'AMBIMA',
-      url: 'https://www.b3.com.br/',
+      filetype: 'XLSX',
       disabled: true,
     }
   ];
@@ -61,6 +86,7 @@ export class ToYmlComponent {
       return;
     }
     this.selectedType = _type.type;
+    this.fileType = _type.filetype;
   }
 
   goToStep(_step: number) {

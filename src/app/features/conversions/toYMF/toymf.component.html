@@ -39,7 +39,7 @@
             </div>
         </div>
 
-        <div class="step" [ngClass]="{'disabled': 3 > step, 'active': step == 3}"  (click)="goToStep(3)">
+        <div class="step" [ngClass]="{'disabled': 3 > step, 'active': step == 3}" (click)="goToStep(3)">
             <div class="icon">
                 <i class="fa fa-eye" aria-hidden="true"></i>
             </div>
@@ -53,7 +53,7 @@
             </div>
         </div>
 
-        <div class="step" [ngClass]="{'disabled': 4 > step,  'active': step == 4}" >
+        <div class="step" [ngClass]="{'disabled': 4 > step,  'active': step == 4}">
             <div class="icon">
                 <i class="fa fa-download" aria-hidden="true"></i>
             </div>
@@ -70,6 +70,7 @@
 
     @if(step == 1){
     <div class="step-one">
+        <img src="assets/piks/step_one.jpg">
         <div class="radio-group">
             @for (importType of importTypes; track importType) {
             <div class="radio-card" (click)="setType(importType)"
@@ -80,6 +81,7 @@
                         <div class="title">
                             {{importType.type}}
                         </div>
+                        ({{ importType.filetype}})
                     </div>
                 </div>
             </div>
@@ -90,26 +92,31 @@
     @if(step == 2){
     <div class="step-two">
 
+        <div class="files-conteiner">
 
-        <label class="file-send" for="fileToConvert"> <i class="fa fa-cloud-upload" aria-hidden="true"></i> Enviar
-            Arquivo XLSX</label>
-        <input type="file" name="fileToConvert" id="fileToConvert" hidden (change)="selectFile($event)">
-        @if(fileName != ''){
-        <label class="file-sended">
-            <i class="fa fa-file-text-o" aria-hidden="true"></i>
-            <div>
-                {{fileName}}
-                <br>
-                {{fileSize | number : '1.2-2'}} kb
-            </div>
-        </label>
-        }
+            <label class="file-send" for="fileToConvert"> <i class="fa fa-cloud-upload" aria-hidden="true"></i> Enviar
+                Arquivo {{fileType}}</label>
+            <input type="file" name="fileToConvert" id="fileToConvert" hidden (change)="selectFile($event)">
+            @if(fileName != ''){
+            <label class="file-sended">
+                <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                <div>
+                    {{fileName}}
+                    <br>
+                    {{fileSize | number : '1.2-2'}} kb
+                </div>
+            </label>
+            }
+        </div>
 
+        <img src="assets/piks/step_two.jpg">
 
     </div>
     }
     @if(step == 3){
     <div class="step-three">
+        <img src="assets/piks/step_three.jpg">
+
         <div class="container">
             <table class="table" *ngIf="users?.length>0">
                 <thead>
@@ -137,19 +144,20 @@
     }
 
     @if(step == 4){
-    <div class="step-two">
+    <div class="step-four">
 
-        Pronto!
-        <br>
-        Seu arquivo já está disponivel para download.
-        <br>
-        <br>
-        <br>
-
-        <button mat-flat-button color="primary">
-            Download
-            <i class="fa fa-download" aria-hidden="true"></i>
-        </button>
+        <img src="assets/piks/step_four.jpg">
+        <div class="container">
+            <div>
+                Pronto!
+                <br>
+                Seu arquivo já está disponivel para download.
+            </div>
+            <button mat-flat-button color="primary">
+                Download
+                <i class="fa fa-download" aria-hidden="true"></i>
+            </button>
+        </div>
     </div>
     }
 

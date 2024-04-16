@@ -58,22 +58,30 @@
 }
 
 .step-one {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: space-around;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+    height: calc(100vh - 265px);
+
+    img {
+        width: 80%;
+        align-self: center;
+        justify-self: center;
+        max-height: calc(100vh - 265px);
+    }
 
     .radio-group {
         display: flex;
         flex-wrap: wrap;
+        align-content: space-around;
+        justify-content: space-around;
+        gap: 10px;
+        padding: 10px 20px;
     }
 
     .radio-card {
         border: #c5eafa 1px solid;
         border-radius: 15px;
-        margin: 15px;
         padding: 10px 20px;
         cursor: pointer;
         background-color: white;
@@ -131,63 +139,124 @@
 }
 
 .step-two {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-content: space-around;
-    align-items: center;
-    justify-content: center;
+    // display: flex;
+    // flex-direction: column;
+    // flex-wrap: wrap;
+    // align-content: space-around;
+    // align-items: center;
+    // justify-content: center;
 
-    .file-send {
-        border-radius: 10px;
-        border: 1px dashed #34a3d4;
-        margin: 20px;
-        padding: 20px 40px;
-        cursor: pointer;
-        display: flex;
-        justify-content: space-between;
-        gap: 20px;
-        align-items: center;
-        color: #3f51b5;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    height: calc(100vh - 265px);
 
-        &:hover {
-            background: #cdeefc;
-        }
+    img {
+        width: 80%;
+        align-self: center;
+        justify-self: center;
+        max-height: calc(100vh - 265px);
     }
 
-    .file-sended {
-        border-radius: 10px;
-        border: 1px solid;
-        padding: 5px 30px;
-        color: #3f51b5;
+
+    .files-conteiner {
         display: flex;
-        justify-content: space-between;
-        gap: 20px;
+        flex-direction: column;
         align-items: center;
+
+        .file-send {
+            border-radius: 10px;
+            border: 1px dashed #34a3d4;
+            margin: 20px;
+            padding: 20px 40px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            align-items: center;
+            color: #3f51b5;
+            width: 200px;
+
+
+            &:hover {
+                background: #cdeefc;
+            }
+        }
+
+        .file-sended {
+            border-radius: 10px;
+            border: 1px solid;
+            padding: 20px 40px;
+            color: #3f51b5;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            width: 200px;
+            margin: 20px;
+
+        }
     }
 }
 
 .step-three {
-    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 10px;
+    height: calc(100vh - 265px);
 
-    .container{
+    img {
+        // width: 80%;
+        align-self: center;
+        justify-self: center;
+        max-height: calc(100vh - 265px);
+    }
+
+    .container {
         padding: 10px;
-        height: calc(100vh - 400px);
+        height: calc(100vh - 285px);
         overflow: auto;
     }
+
     .table {
         width: 100%;
         padding: 10px;
         border: 1px solid #c5eafa;
         border-radius: 5px;
-    
-        td{
+
+        td {
             text-align: center;
         }
 
-        tr:hover{
+        tr:hover {
             background-color: #cdeefc;
         }
+    }
+}
+
+
+.step-four {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    height: calc(100vh - 265px);
+
+    img {
+        // width: 80%;
+        align-self: center;
+        justify-self: end;
+        max-height: calc(100vh - 265px);
+    }
+
+    .container {
+        gap: 10px;
+        height: calc(100vh - 285px);
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-content: flex-start;
+        justify-content: center;
+        align-items: flex-start;
     }
 }
 

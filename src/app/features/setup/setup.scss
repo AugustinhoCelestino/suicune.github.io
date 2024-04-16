@@ -7,6 +7,8 @@
 /* Visual styles */
 .accordion {
     border: 1px solid #c5eafa;
+    height: calc(100vh - 170px);
+    overflow-y: auto;
 }
 
 .tab-label,
@@ -83,18 +85,32 @@ input {
     color: #2d7799;
 }
 
-.label-imput{
+.label-imput {
     display: flex;
     flex-direction: column;
     color: #2d7799;
 }
 
-button{
+button {
     border: 1px solid;
     outline: none;
     border-radius: 5px;
     padding: 5px 10px 5px 10px;
     font-size: 12px;
     color: #2d7799;
-    background-color: #c5eafa; 
+    background-color: #c5eafa;
+}
+
+.conteiner {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 10px;
+    height: calc(100vh - 165px);
+
+    img {
+        // width: 80%;
+        align-self: center;
+        justify-self: center;
+        max-height: calc(100vh - 165px);
+    }
 }
